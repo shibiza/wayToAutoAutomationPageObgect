@@ -1,5 +1,7 @@
-package org.example.pageObject;
+package org.example.pageObject.DeliveryToFunctionality;
 
+import org.example.pageObject.AddRemoveCart.ProductPage;
+import org.example.pageObject.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,7 +19,7 @@ public class SearchResultPage extends BasePage {
         super(webDriver);
     }
 
-    public BasePage.ProductPage selectAnyProductOnSearchResultPage() {
+    public BasePage selectAnyProductOnSearchResultPage() {
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {

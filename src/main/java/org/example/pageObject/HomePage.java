@@ -1,6 +1,7 @@
 package org.example.pageObject;
 
-import org.example.pageObject.modules.ZipCodeInputModule;
+import org.example.pageObject.DeliveryToFunctionality.CatalogPage;
+import org.example.pageObject.DeliveryToFunctionality.ZipCodeInputModule;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

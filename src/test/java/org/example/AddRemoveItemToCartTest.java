@@ -1,23 +1,15 @@
 package org.example;
 
-import org.example.pageObject.ProductPage;
+import org.example.pageObject.AddRemoveCart.ProductPage;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 public class AddRemoveItemToCartTest extends BaseTest {
 
-    @AfterMethod
-    public void finish() {
-        webDriver.close();
-        webDriver.quit();
-    }
+    ProductPage productPage = new ProductPage(webDriver);
 
     @Test
     public void addToCart() {
-
-        ProductPage productPage = new ProductPage(webDriver);
-
         String cartAmount = productPage
                 .open()
                 .addToCart()
@@ -28,8 +20,6 @@ public class AddRemoveItemToCartTest extends BaseTest {
 
     @Test
     public void removeFromCart() {
-        ProductPage productPage = new ProductPage(webDriver);
-
         String cartPrice = productPage
                 .open()
                 .addToCart()

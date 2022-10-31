@@ -1,5 +1,6 @@
-package org.example.pageObject;
+package org.example.pageObject.AddRemoveCart;
 
+import org.example.pageObject.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -33,18 +34,18 @@ public class ProductPage extends BasePage {
         super (webDriver);
     }
 
-    public org.example.pageObject.ProductPage open () {
+    public ProductPage open () {
         webDriver.get("https://www.amazon.com/Sceptre-E248W-19203R-Monitor-Speakers-Metallic/dp/B0773ZY26F/ref=lp_16225007011_1_3");
         webDriver.manage().window().maximize();
         return this;
     }
 
-    public org.example.pageObject.ProductPage addToCart() {
+    public ProductPage addToCart() {
         buttonAddToCart.click();
         return this;
     }
 
-    public org.example.pageObject.ProductPage closeSlideSheet () {
+    public ProductPage closeSlideSheet () {
         WebElement addedToCard = new WebDriverWait(webDriver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='a-size-medium-plus a-color-base sw-atc-text a-text-bold']")));
         closeSideSheet.click();
@@ -55,12 +56,12 @@ public class ProductPage extends BasePage {
         return cartAmount.getText();
     }
 
-    public org.example.pageObject.ProductPage cartClick () {
+    public ProductPage cartClick () {
         cart.click();
         return this;
     }
 
-    public org.example.pageObject.ProductPage cartClear () {
+    public ProductPage cartClear () {
         cartDeleteButton.click();
         return this;
     }

@@ -1,4 +1,4 @@
-package org.example.pageObject.modules;
+package org.example.pageObject.DeliveryToFunctionality;
 
 import org.example.pageObject.BasePage;
 import org.openqa.selenium.By;
