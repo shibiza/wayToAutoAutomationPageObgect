@@ -1,6 +1,5 @@
-package org.example.pageObject.wayToAutomation;
+package org.example.invoker.wayToAutomation;
 
-import org.example.pageObject.HomePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -99,5 +98,15 @@ public class HomePageWayToAutomation {
     public HomePageWayToAutomation enterPassword(String writePassword) {
         webDriver.findElement((By) password).sendKeys(writePassword);
         return this;
+    }
+
+    public boolean error() {
+        boolean errorElements = webDriver.findElements(By.className("error_p")).isEmpty();
+        return errorElements;
+    }
+
+    public boolean warningSignWrongEmail() {
+        boolean warning = webDriver.findElement((By) warningWrongEmail).isDisplayed();
+        return warning;
     }
 }

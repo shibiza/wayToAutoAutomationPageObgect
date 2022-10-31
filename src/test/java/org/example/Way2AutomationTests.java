@@ -1,6 +1,6 @@
 package org.example;
 
-import org.example.pageObject.wayToAutomation.HomePageWayToAutomation;
+import org.example.invoker.wayToAutomation.HomePageWayToAutomation;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -34,11 +34,13 @@ public class Way2AutomationTests extends BaseTest {
                 .enterPassword(writePassword);
         WebElement submitButton = webDriver.findElement(By.xpath("//*[@id=\"register_form\"]/fieldset[13]/input"));
         submitButton.click();
+        Assert.assertTrue(homePageWayToAutomation.error(), "Registration failed");
     }
 
- /*   @Test
+    @Test
     public void wrongCredentials() {
-        homePageWayToAutomation.enterFirstName(writeFirstName)
+        homePageWayToAutomation.openWayToAuto()
+                .enterFirstName(writeFirstName)
                 .enterLastName(writeLastName)
                 .enterMaritalStatus()
                 .enterHobbyReading()
@@ -46,6 +48,6 @@ public class Way2AutomationTests extends BaseTest {
                 .enterUsername(writeUserName)
                 .enterWrongEmail(wrongEmail)
                 .enterPassword(writePassword);
-        Assert.assertTrue(warningWrongEmail.getText().contains(warningBadEmail));
-    }*/
+        Assert.assertTrue(homePageWayToAutomation.warningSignWrongEmail(), warningBadEmail);
+    }
 }
