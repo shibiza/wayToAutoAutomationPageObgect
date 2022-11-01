@@ -13,11 +13,12 @@ public class DeliveryToFunctionalityTest extends BaseTest {
     String zipCode = "90210";
 
     HomePage homePage = new HomePage(webDriver);
+    ZipCodeInputModule zipCodeInputModule = homePage.open().clickDeliverTo();
 
     @Test
     public void verifyZipCodeCorrectUpdateOnChangeInDeliverToSection() {
 
-        ZipCodeInputModule zipCodeInputModule = homePage.open().clickDeliverTo();
+
         zipCodeInputModule.setZipCodeAndApply(zipCode);
         homePage.waitForReload();
         var deliverToText = homePage.getDeliverToText();
@@ -28,7 +29,7 @@ public class DeliveryToFunctionalityTest extends BaseTest {
     @Test
     public void verifyDeliverToListOfCountiesContainsPoland() {
 
-        ZipCodeInputModule zipCodeInputModule = homePage.open().clickDeliverTo();
+
         Assert.assertTrue(
                 zipCodeInputModule.deliverToListOfCounties().stream().anyMatch(c -> c.equals(countryName)),
                 "List of countries doesn't contain " + countryName);
@@ -37,7 +38,7 @@ public class DeliveryToFunctionalityTest extends BaseTest {
     @Test
     public void verifyShippingToSectionContainsDeliverToCountry() {
 
-        ZipCodeInputModule zipCodeInputModule = homePage.open().clickDeliverTo();
+
         zipCodeInputModule.chooseCountryAndApply(countryName);
         homePage.waitForReload();
         CatalogPage catalogPage = homePage.clickHeadsetsCatalog();

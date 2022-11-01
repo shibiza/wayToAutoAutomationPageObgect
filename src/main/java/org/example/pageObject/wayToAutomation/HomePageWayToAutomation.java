@@ -104,11 +104,6 @@ public class HomePageWayToAutomation extends BasePageWayToAuto {
         return this;
     }
 
-    public boolean warningSignWrongEmail() {
-        boolean warning = webDriver.findElement((By) warningWrongEmail).isDisplayed();
-        return warning;
-    }
-
     public boolean shouldBeFilled() {
         boolean warningRegistrationIsFailed = webDriver.findElement(By.xpath("//label[contains(text(),'This field is required.')]")).isDisplayed();
         return warningRegistrationIsFailed;

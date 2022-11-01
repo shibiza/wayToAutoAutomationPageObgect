@@ -17,6 +17,7 @@ public class Way2AutomationTests extends BaseTest {
     public String wrongEmail = "samoiliknatagmail.com";
     public String writePassword = "123456";
     public String warningBadEmail = "Please enter a valid email address.";
+    public String registrationPassed = "Registration passed but the required fields were left unfilled";
 
     HomePageWayToAutomation homePageWayToAutomation = new HomePageWayToAutomation(webDriver);
 
@@ -32,7 +33,7 @@ public class Way2AutomationTests extends BaseTest {
                 .enterWriteEmail(writeEmail)
                 .enterPassword(writePassword)
                 .pressSubmitButton();
-        Assert.assertTrue(homePageWayToAutomation.shouldBeFilled(), "Registration passed but the required fields were left unfilled");;
+        Assert.assertTrue(homePageWayToAutomation.shouldBeFilled(), registrationPassed);;
     }
 
     @Test
