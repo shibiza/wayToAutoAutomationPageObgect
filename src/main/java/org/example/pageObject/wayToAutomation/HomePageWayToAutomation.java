@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePageWayToAutomation extends BasePageWayToAuto {
 
@@ -43,61 +44,73 @@ public class HomePageWayToAutomation extends BasePageWayToAuto {
 
     public HomePageWayToAutomation openWayToAuto() {
         webDriver.get("https://www.way2automation.com/way2auto_jquery/registration.php#load_box");
+        webDriver.manage().window().maximize();
         return this;
     }
 
+    private void waitForElementVisibility(WebElement element) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
     public HomePageWayToAutomation enterFirstName(String writeFirstName) {
-        webDriver.findElement((By) firstNameForm).sendKeys(writeFirstName);
+        waitForElementVisibility(firstNameForm);
+        firstNameForm.sendKeys(writeFirstName);
         return this;
     }
 
     public HomePageWayToAutomation enterLastName(String writeLastName) {
-        webDriver.findElement((By) lastNameForm).sendKeys(writeLastName);
+        waitForElementVisibility(lastNameForm);
+        lastNameForm.sendKeys(writeLastName);
         return this;
     }
 
     public HomePageWayToAutomation enterMaritalStatus() {
-        webDriver.findElement((By) maritalStatusMarried).click();
+        maritalStatusMarried.click();
         return this;
     }
 
     public HomePageWayToAutomation enterHobbyReading() {
-        webDriver.findElement((By) hobbyReading).click();
+        hobbyReading.click();
         return this;
     }
 
     public HomePageWayToAutomation enterPhoneNumber(String writePhoneNumber) {
-        webDriver.findElement((By) phoneNumberForm).sendKeys(writePhoneNumber);
+        phoneNumberForm.sendKeys(writePhoneNumber);
         return this;
     }
 
     public HomePageWayToAutomation enterUsername(String writeUserName) {
-        webDriver.findElement((By) userNameForm).sendKeys(writeUserName);
+        userNameForm.sendKeys(writeUserName);
         return this;
     }
 
     public HomePageWayToAutomation enterWriteEmail(String writeEmail) {
-        webDriver.findElement((By) emailForm).sendKeys(writeEmail);
+        emailForm.sendKeys(writeEmail);
         return this;
     }
 
     public HomePageWayToAutomation enterWrongEmail(String wrongEmail) {
-        webDriver.findElement((By) emailForm).sendKeys(wrongEmail);
+        emailForm.sendKeys(wrongEmail);
         return this;
     }
 
     public HomePageWayToAutomation enterPassword(String writePassword) {
-        webDriver.findElement((By) password).sendKeys(writePassword);
+        password.sendKeys(writePassword);
         return this;
     }
 
-    public boolean error() {
-        boolean errorElements = webDriver.findElements(By.className("error_p")).isEmpty();
-        return errorElements;
+    public HomePageWayToAutomation pressSubmitButton() {
+        submitButton.click();
+        return this;
     }
 
     public boolean warningSignWrongEmail() {
         boolean warning = webDriver.findElement((By) warningWrongEmail).isDisplayed();
         return warning;
+    }
+
+    public boolean shouldBeFilled() {
+        boolean warningRegistrationIsFailed = webDriver.findElement(By.xpath("//label[contains(text(),'This field is required.')]")).isDisplayed();
+        return warningRegistrationIsFailed;
     }
 }

@@ -30,15 +30,14 @@ public class Way2AutomationTests extends BaseTest {
                 .enterPhoneNumber(writePhoneNumber)
                 .enterUsername(writeUserName)
                 .enterWriteEmail(writeEmail)
-                .enterPassword(writePassword);
-        WebElement submitButton = webDriver.findElement(By.xpath("//*[@id=\"register_form\"]/fieldset[13]/input"));
-        submitButton.click();
-        Assert.assertTrue(homePageWayToAutomation.error(), "Registration failed");
+                .enterPassword(writePassword)
+                .pressSubmitButton();
+        Assert.assertTrue(homePageWayToAutomation.shouldBeFilled(), "Registration passed but the required fields were left unfilled");;
     }
 
     @Test
     public void wrongCredentials() {
-        homePageWayToAutomation.openWayToAuto()
+      String receivingWarning = String.valueOf(homePageWayToAutomation.openWayToAuto()
                 .enterFirstName(writeFirstName)
                 .enterLastName(writeLastName)
                 .enterMaritalStatus()
@@ -46,7 +45,7 @@ public class Way2AutomationTests extends BaseTest {
                 .enterPhoneNumber(writePhoneNumber)
                 .enterUsername(writeUserName)
                 .enterWrongEmail(wrongEmail)
-                .enterPassword(writePassword);
-        Assert.assertTrue(homePageWayToAutomation.warningSignWrongEmail(), warningBadEmail);
+                .enterPassword(writePassword));
+        Assert.assertFalse(Boolean.parseBoolean(receivingWarning), warningBadEmail);
     }
 }
