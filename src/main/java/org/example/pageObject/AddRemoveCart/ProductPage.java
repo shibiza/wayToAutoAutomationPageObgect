@@ -6,9 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class ProductPage extends BasePage {
 
@@ -46,7 +43,7 @@ public class ProductPage extends BasePage {
     }
 
     public ProductPage closeSlideSheet () {
-        WebElement addedToCard = new WebDriverWait(webDriver, Duration.ofSeconds(10))
+        WebElement addedToCard = wait
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='a-size-medium-plus a-color-base sw-atc-text a-text-bold']")));
         closeSideSheet.click();
         return this;
@@ -67,7 +64,7 @@ public class ProductPage extends BasePage {
     }
 
     public String getCartSubtotal () {
-        WebElement cartH1 = new WebDriverWait(webDriver,Duration.ofSeconds(10))
+        WebElement cartH1 = wait
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[@class='a-spacing-mini a-spacing-top-base']")));
         return cartSubtotal.getText();
     }

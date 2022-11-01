@@ -15,6 +15,13 @@ import java.util.stream.Collectors;
 
 public class ZipCodeInputModule extends BasePage {
 
+    @FindBy(xpath = "//*[@id=\"contextualIngressPtLabel\"]")
+    WebElement deliveryCountry;
+
+    public String getDeliveryCountry() {
+        return deliveryCountry.getText();
+    }
+
     private WebElement applyButton;
     private WebElement continueButton;
     private WebElement selectElement;

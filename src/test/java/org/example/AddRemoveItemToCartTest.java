@@ -27,7 +27,6 @@ public class AddRemoveItemToCartTest extends BaseTest {
                 .cartClick()
                 .cartClear()
                 .getCartSubtotal();
-
         Assert.assertEquals(" $0.00", cartPrice, "Removing from cart failed");
     }
 }

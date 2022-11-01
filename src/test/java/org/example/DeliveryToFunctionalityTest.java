@@ -2,7 +2,7 @@ package org.example;
 
 import org.example.pageObject.DeliveryToFunctionality.CatalogItemPage;
 import org.example.pageObject.DeliveryToFunctionality.CatalogPage;
-import org.example.pageObject.HomePage;
+import org.example.pageObject.DeliveryToFunctionality.HomePage;
 import org.example.pageObject.DeliveryToFunctionality.ZipCodeInputModule;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -11,6 +11,7 @@ public class DeliveryToFunctionalityTest extends BaseTest {
 
     String countryName = "Poland";
     String zipCode = "90210";
+
     HomePage homePage = new HomePage(webDriver);
 
     @Test

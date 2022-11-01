@@ -1,24 +1,11 @@
-package org.example.invoker.wayToAutomation;
+package org.example.pageObject.wayToAutomation;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
-public class HomePageWayToAutomation {
-
-    protected WebDriver webDriver;
-    protected WebDriverWait wait;
-
-    public HomePageWayToAutomation(WebDriver webDriver) {
-        this.webDriver = webDriver;
-        this.wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
-        PageFactory.initElements(webDriver, this);
-    }
+public class HomePageWayToAutomation extends BasePageWayToAuto {
 
     @FindBy(xpath = "//*[@id=\"register_form\"]/fieldset[1]/p[1]/input")
     private WebElement firstNameForm;
@@ -49,6 +36,10 @@ public class HomePageWayToAutomation {
 
     @FindBy(xpath = "//*[@id=\"register_form\"]/fieldset[8]/label[2]")
     private WebElement warningWrongEmail;
+
+    public HomePageWayToAutomation(WebDriver webDriver) {
+        super(webDriver);
+    }
 
     public HomePageWayToAutomation openWayToAuto() {
         webDriver.get("https://www.way2automation.com/way2auto_jquery/registration.php#load_box");

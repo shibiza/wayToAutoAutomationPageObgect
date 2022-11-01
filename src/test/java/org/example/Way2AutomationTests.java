@@ -1,6 +1,6 @@
 package org.example;
 
-import org.example.invoker.wayToAutomation.HomePageWayToAutomation;
+import org.example.pageObject.wayToAutomation.HomePageWayToAutomation;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,7 +9,6 @@ import org.testng.annotations.Test;
 
 public class Way2AutomationTests extends BaseTest {
 
-    public WebDriver webDriver;
     public String writeFirstName = "Natallia";
     public String writeLastName = "Samoilik";
     public String writePhoneNumber = "572111551";
