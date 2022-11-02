@@ -1,49 +1,31 @@
 package org.example;
 
-import org.example.pageObject.DeliveryToFunctionality.CatalogItemPage;
-import org.example.pageObject.DeliveryToFunctionality.CatalogPage;
+import org.example.factory.WebDriverFactory;
+import org.example.pageObject.AddRemoveCart.ProductPage;
 import org.example.pageObject.DeliveryToFunctionality.HomePage;
-import org.example.pageObject.DeliveryToFunctionality.ZipCodeInputModule;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class DeliveryToFunctionalityTest extends BaseTest {
+public class DeliveryToFunctionalityTest {
 
-    String countryName = "Poland";
-    String zipCode = "90210";
+    public HomePage homePage;
+    public String poland = "Poland";
+    public String zip = "90210";
+    public String headphones = "headphones";
 
-    HomePage homePage = new HomePage(webDriver);
-    ZipCodeInputModule zipCodeInputModule = homePage.open().clickDeliverTo();
-
-    @Test
-    public void verifyZipCodeCorrectUpdateOnChangeInDeliverToSection() {
-
-
-        zipCodeInputModule.setZipCodeAndApply(zipCode);
-        homePage.waitForReload();
-        var deliverToText = homePage.getDeliverToText();
-        Assert.assertTrue(deliverToText.contains(zipCode),
-                "Delivery To Textbox doesn't contain the required zipcode");
+    @BeforeClass
+    public void setup() {
+        WebDriver webDriver = new WebDriverFactory().getWebDriver();
+        homePage = new HomePage(webDriver);
     }
 
     @Test
-    public void verifyDeliverToListOfCountiesContainsPoland() {
-
-
-        Assert.assertTrue(
-                zipCodeInputModule.deliverToListOfCounties().stream().anyMatch(c -> c.equals(countryName)),
-                "List of countries doesn't contain " + countryName);
-    }
-
-    @Test
-    public void verifyShippingToSectionContainsDeliverToCountry() {
-
-
-        zipCodeInputModule.chooseCountryAndApply(countryName);
-        homePage.waitForReload();
-        CatalogPage catalogPage = homePage.clickHeadsetsCatalog();
-        CatalogItemPage catalogItemPage = catalogPage.clickCatalogItem();
-        Assert.assertTrue(catalogItemPage.getDeliveryCountryName().contains(countryName),
-                "Catalog item delivery country is not " + countryName);
+    public void testDeliverCountryPoland() {
+        boolean isDeliveredCountryPoland = homePage.open().openProfileDropDown().inputPostalCodeInDropdownModuleAndClickApplyButton(zip).openProfileDropDown().
+                chooseDeliverLocationAsPolandAndClickDoneButton().searchOnSearchFieldByData(headphones).selectAnyProductOnSearchResultPage().getDeliveryCountry().contains(poland);
+        Assert.assertTrue(isDeliveredCountryPoland);
     }
 }
+

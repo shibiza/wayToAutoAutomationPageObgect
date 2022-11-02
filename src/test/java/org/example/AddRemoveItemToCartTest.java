@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 public class AddRemoveItemToCartTest extends BaseTest {
 
     public String cartSubtotalOneItem = "1";
-
     ProductPage productPage = new ProductPage(webDriver);
 
     @Test

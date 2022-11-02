@@ -1,6 +1,5 @@
 package org.example.pageObject.DeliveryToFunctionality;
 
-import org.example.pageObject.AddRemoveCart.ProductPage;
 import org.example.pageObject.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,7 +18,7 @@ public class SearchResultPage extends BasePage {
         super(webDriver);
     }
 
-    public BasePage selectAnyProductOnSearchResultPage() {
+    public ProductPage selectAnyProductOnSearchResultPage() {
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
